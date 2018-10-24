@@ -104,7 +104,7 @@ extension PageContentView : UICollectionViewDelegate {
         var targetIndex : Int = 0
         
         // 判断左滑还是右滑
-        var currentOffsetX = scrollView.contentOffset.x
+        let currentOffsetX = scrollView.contentOffset.x
         let scrollViewWidth = scrollView.bounds.width
         
         if currentOffsetX > startContentOffsetX {

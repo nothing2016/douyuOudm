@@ -23,9 +23,11 @@ class HomeViewController: UIViewController {
     
     private lazy var pageContentView : PageContentView = { [weak self] in
         // 确定pageContent的frame的大小
-        let pageContentFrame = CGRect(x: 0, y: kStatusBarHeight + kNavigationBarHeight + kTitleViewHeight, width: kScreenWidth, height: kScreenHeigth - kStatusBarHeight - kNavigationBarHeight - kTitleViewHeight)
+        let pageContentFrame = CGRect(x: 0, y: kStatusBarHeight + kNavigationBarHeight + kTitleViewHeight, width: kScreenWidth, height: kScreenHeigth - kStatusBarHeight - kNavigationBarHeight - kTitleViewHeight - kTabbarHeight )
         var childViewControllers = [UIViewController]()
-        for _ in 0..<4 {
+        // 先加入推荐控制器
+        childViewControllers.append(RecommendViewController())
+        for _ in 0..<3 {
             let viewController = UIViewController()
             viewController.view.backgroundColor = UIColor(red: CGFloat(arc4random_uniform(255)), green: CGFloat(arc4random_uniform(255)), blue: CGFloat(arc4random_uniform(255)))
             childViewControllers.append(viewController)
