@@ -18,6 +18,7 @@ private let kHeaderViewHeight : CGFloat = 50
 class RecommendViewController: UIViewController {
 
     // 懒加载属性
+    private lazy var recommendViewModel : RecommendViewModel = RecommendViewModel()
     private lazy var collectionView : UICollectionView = {[unowned self] in
         // 1.先创建布局
         var collectionViewLayout = UICollectionViewFlowLayout()
@@ -40,13 +41,25 @@ class RecommendViewController: UIViewController {
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
+        // 1.设置UI界面
         setupUI()
+        
+        // 2.发送网络请求数据
+        loadData()
     }
 }
 
+// 设置界面内容
 extension RecommendViewController {
     private func setupUI() -> Void {
         view.addSubview(collectionView)
+    }
+}
+
+// 发送网络请求
+extension RecommendViewController {
+    func loadData() -> Void {
+        recommendViewModel.requestData()
     }
 }
 
