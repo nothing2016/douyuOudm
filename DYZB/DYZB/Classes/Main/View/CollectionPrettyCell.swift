@@ -7,12 +7,20 @@
 //
 
 import UIKit
+import Kingfisher
 
-class CollectionPrettyCell: UICollectionViewCell {
+class CollectionPrettyCell: CollectionBaseCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    @IBOutlet weak var cityButton: UIButton!
+    // 定义主播的模型属性
+    override var anchor : AnchorModel?{
+        didSet{
+            super.anchor = anchor
+            //所在城市
+            cityButton.setTitle(anchor?.anchor_city, for: .normal)
+        }
     }
+
+
 
 }

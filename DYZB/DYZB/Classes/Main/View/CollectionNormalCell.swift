@@ -8,11 +8,16 @@
 
 import UIKit
 
-class CollectionNormalCell: UICollectionViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+class CollectionNormalCell: CollectionBaseCell {
+    // 控件属性
+    @IBOutlet weak var roomNameLabel: UILabel!
+    // 定义主播的模型属性
+    override var anchor : AnchorModel?{
+        didSet{
+            super.anchor = anchor
+            //房间名称
+            roomNameLabel.text = anchor?.room_name
+        }
     }
 
 }
