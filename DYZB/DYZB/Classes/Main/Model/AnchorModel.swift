@@ -23,6 +23,8 @@ class AnchorModel: NSObject {
     var nickname : String = ""
     // 在线人数
     var online : Int = 0
+    // 主播城市
+    var anchor_city : String = ""
  
     init(dic : [String : NSObject]) {
         super.init()
@@ -49,8 +51,8 @@ class AnchorModel: NSObject {
             }
         }
         if key == "isVertical" {
-            if let isVertical_str = value as? String{
-                isVertical = Int(isVertical_str)!
+            if let isVertical_Int = value as? Int{
+                isVertical = isVertical_Int
             }else{
                 isVertical = 0
             }
@@ -70,10 +72,19 @@ class AnchorModel: NSObject {
             }
         }
         if key == "online" {
-            if let online_str = value as? String{
-                online = Int(online_str)!
+            if let online_Int = value as? Int{
+                online = online_Int
             }else{
-                online = 0
+                if let online_Str = value as? String {
+                    online = Int(online_Str) ?? 0
+                }
+            }
+        }
+        if key == "anchor_city" {
+            if let anchor_city_str = value as? String {
+                anchor_city = anchor_city_str
+            }else{
+                anchor_city = ""
             }
         }
     }

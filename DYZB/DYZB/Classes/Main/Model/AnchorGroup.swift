@@ -18,6 +18,10 @@ class AnchorGroup: NSObject {
     // 定义主播的模型对象数组
     lazy var anchors : [AnchorModel] = [AnchorModel]()
     
+    override init() {
+        super.init()
+    }
+    
     init(dict : [String : NSObject]) {
         super.init()
 //        self.room_list = dict["room_list"] as? [[String : NSObject]]
@@ -45,7 +49,7 @@ class AnchorGroup: NSObject {
             if let icon_url_str = value as? String {
                 icon_url = icon_url_str
             }else{
-                icon_url = ""
+                icon_url = "home_header_normal"
             }
         }
     }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -40,7 +40,7 @@
                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SOp-YE-CSN">
                         <rect key="frame" x="143" y="94" width="49" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                        <state key="normal" title="1233" image="home_live_cate_normal">
+                        <state key="normal" title="1233" image="Image_online">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
                     </button>
@@ -67,10 +67,17 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="202" height="135"/>
+            <connections>
+                <outlet property="iconImageView" destination="ray-ud-FRL" id="u8E-Sg-CBH"/>
+                <outlet property="nickNameLabel" destination="rWC-Yk-Edz" id="68X-Pz-pIm"/>
+                <outlet property="onlineButton" destination="SOp-YE-CSN" id="DlQ-E3-XgS"/>
+                <outlet property="roomNameLabel" destination="Gkc-Qs-pD4" id="dUy-F3-3DE"/>
+            </connections>
             <point key="canvasLocation" x="34" y="-40.5"/>
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="Image_online" width="8" height="8"/>
         <image name="Img_default" width="172" height="103"/>
         <image name="home_live_cate_normal" width="14" height="14"/>
     </resources>
