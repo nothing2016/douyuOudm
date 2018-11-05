@@ -12,11 +12,26 @@ import Alamofire
 class RecommendViewModel{
     // 懒加载属性
     lazy var anchorGroups : [AnchorGroup] = [AnchorGroup]()
+    lazy var cycleModels : [CycleModel] = [CycleModel]()
     private lazy var hotGroup : AnchorGroup = AnchorGroup()
     private lazy var prettyGroup : AnchorGroup = AnchorGroup()
 }
-
 extension RecommendViewModel {
+    func requestCycleData(finishCallback:@escaping ()->()) -> Void {
+        // http://www.douyutv.com/api/v1/slide/6?version=2.300
+        NetworkTools.requestData(type: .GET, urlString: "http://www.douyutv.com/api/v1/slide/6?version=2.300") { (result) in
+//            print(result)
+            // 1.将字典转化成字典类型
+            guard let resultDic = result as? [String:NSObject] else {return}
+            // 2.根据data的key获取值
+            guard let dataArray = resultDic["data"] as? [[String:NSObject]] else {return}
+            for dict in dataArray {
+                self.cycleModels.append(CycleModel(dic: dict))
+            }
+            finishCallback()
+        }
+    }
+    // 请求了推荐的数据
     func requestData(finishCallback:@escaping ()->()) -> Void {
         // 创建dispatch_group，用于控制异步线程的同步
         let dispatchGroup = DispatchGroup()

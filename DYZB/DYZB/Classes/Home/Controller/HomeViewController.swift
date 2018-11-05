@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let kTitleViewHeight : CGFloat = 40
+let kTitleViewHeight : CGFloat = 40
 class HomeViewController: UIViewController {
 
     // 懒加载属性

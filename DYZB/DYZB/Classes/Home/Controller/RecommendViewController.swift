@@ -15,9 +15,15 @@ private let kNormalID : String = "kNormalID"
 private let kPrettyID : String = "kPrettyID"
 private let kHeaderID : String = "kHeaderID"
 private let kHeaderViewHeight : CGFloat = 50
+let kCycleViewHeight : CGFloat = kScreenHeigth * 1/4
 class RecommendViewController: UIViewController {
 
     // 懒加载属性
+    private lazy var cycleView:RecommendCycleView = {
+        let cycleView = RecommendCycleView.recommendCycleView()
+        cycleView.frame = CGRect(x: 0, y: -kCycleViewHeight, width: kScreenWidth, height: kCycleViewHeight)
+        return cycleView
+    }()
     private lazy var recommendViewModel : RecommendViewModel = RecommendViewModel()
     private lazy var collectionView : UICollectionView = {[unowned self] in
         // 1.先创建布局
@@ -52,15 +58,27 @@ class RecommendViewController: UIViewController {
 // 设置界面内容
 extension RecommendViewController {
     private func setupUI() -> Void {
+        // 添加collectionView
         view.addSubview(collectionView)
+        // 将cycleView 添加到collectionView中
+        collectionView.addSubview(cycleView)
+        // 设置collection的内边距
+        collectionView.contentInset = UIEdgeInsets(top: kCycleViewHeight, left: 0, bottom: 0, right: 0)
     }
 }
 
 // 发送网络请求
 extension RecommendViewController {
     func loadData() -> Void {
+        // 请求推荐数据
         recommendViewModel.requestData {
             self.collectionView.reloadData()
+        }
+        
+        // 请求轮播数据
+        recommendViewModel.requestCycleData {
+            print("轮播数据请求完成！")
+            self.cycleView.cycleModels = self.recommendViewModel.cycleModels
         }
     }
 }
